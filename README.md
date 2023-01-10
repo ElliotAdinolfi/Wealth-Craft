@@ -1,0 +1,13 @@
+# WealthCraft
+
+[Try it out! :)](https://wealth-craft.vercel.app/)
+
+I made this project because I've been using online investment calculators for years to make rough estimations of portfolio returns. 
+
+But if you've had the misfortune of using the other options out there, you'll know that they aren't very responsive, nor are they aestetically pleasing, and worst of all many of them are littered with ads and pop-ups. What year is it? are pop-ups really still a problem? 
+
+Anyway, I decided to make my own so I won't have to use any of those other options in the future, hopefully you like it as well. 
+
+If you have any suggestions on how to improve the application, please let me know by sending me a DM on [Twitter](https://twitter.com/Elliot_Adinolfi)
+
+And if you want to know more about me, or see some of the articles I write check out my personal [website](https://www.elliotadinolfi.dev/)
