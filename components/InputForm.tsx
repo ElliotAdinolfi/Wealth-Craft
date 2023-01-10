@@ -9,7 +9,7 @@ const InputForm = () => {
     initialInvestment: 10000,
     startingAge: 25,
     annualReturn: 10,
-    yearsToRetirement: 45,
+    endingAge: 70,
     additionalContribution: 0,
     contributionFrequency: 1,
   })
@@ -87,6 +87,16 @@ const InputForm = () => {
         <label htmlFor="startingAge" className="block text-sm font-medium text-gray-700 dark:text-gray-400">Starting Age</label>
         <div className="relative mt-1 rounded-md shadow-sm">
           <input onChange={handleChange} type="text" name="startingAge" id="startingAge" className="text-black block w-full rounded-md border-gray-200 pl-9 pr-12 focus:border-teal-500 focus:ring-teal-500 sm:text-m" placeholder="25" aria-describedby="price-currency" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+            <span className="text-gray-500 sm:text-sm" id="price-currency">Years</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-4">
+        <label htmlFor="endingAge" className="block text-sm font-medium text-gray-700 dark:text-gray-400">Starting Age</label>
+        <div className="relative mt-1 rounded-md shadow-sm">
+          <input onChange={handleChange} type="text" name="endingAge" id="endingAge" className="text-black block w-full rounded-md border-gray-200 pl-9 pr-12 focus:border-teal-500 focus:ring-teal-500 sm:text-m" placeholder="70" aria-describedby="price-currency" />
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
             <span className="text-gray-500 sm:text-sm" id="price-currency">Years</span>
           </div>

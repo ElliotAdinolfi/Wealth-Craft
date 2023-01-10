@@ -14,7 +14,7 @@ import {
 
 const GraphData = ({ data }: GraphProps) => {
 
-  const { initialInvestment, startingAge, annualReturn, yearsToRetirement, additionalContribution, contributionFrequency } = data
+  const { initialInvestment, startingAge, annualReturn, endingAge, additionalContribution, contributionFrequency } = data
   const [dataArray, setDataArray] = useState<[] | {
       age: number;
       value: string;
@@ -25,8 +25,8 @@ const GraphData = ({ data }: GraphProps) => {
     console.log(additionalContribution)
     const dataPoints = [];
     let currentVal = Number(initialInvestment.toString().replace(/[^0-9.]/g, ''))
-    let end = 81 - startingAge;
-    for (let i = 0; i < end; i++) {
+    let end = endingAge - startingAge;
+    for (let i = 0; i < end + 1; i++) {
       dataPoints.push({
         age: Number(startingAge) + i,
         value: currentVal.toFixed(2)
@@ -35,7 +35,7 @@ const GraphData = ({ data }: GraphProps) => {
     }
     setDataArray(dataPoints)
     setMaxVal(Math.round(currentVal))
-  }, [additionalContribution, annualReturn, contributionFrequency, initialInvestment, startingAge, yearsToRetirement])
+  }, [additionalContribution, annualReturn, contributionFrequency, endingAge, initialInvestment, startingAge])
 
   let nf = new Intl.NumberFormat('en-US');
 
@@ -98,7 +98,7 @@ interface GraphProps {
     initialInvestment: number;
     startingAge: number;
     annualReturn: number;
-    yearsToRetirement: number;
+    endingAge: number;
     additionalContribution: number;
     contributionFrequency: number;
   }
