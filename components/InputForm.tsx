@@ -94,7 +94,7 @@ const InputForm = () => {
       </div>
 
       <div className="mt-4">
-        <label htmlFor="endingAge" className="block text-sm font-medium text-gray-700 dark:text-gray-400">Starting Age</label>
+        <label htmlFor="endingAge" className="block text-sm font-medium text-gray-700 dark:text-gray-400">Ending Age</label>
         <div className="relative mt-1 rounded-md shadow-sm">
           <input onChange={handleChange} type="text" name="endingAge" id="endingAge" className="text-black block w-full rounded-md border-gray-200 pl-9 pr-12 focus:border-teal-500 focus:ring-teal-500 sm:text-m" placeholder="70" aria-describedby="price-currency" />
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
