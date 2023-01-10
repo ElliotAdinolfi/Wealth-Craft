@@ -15,6 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main className={styles.main}>
+        <h1 className="mb-8 text-6xl text-teal-500 dark:text-teal-300 font-bold">WealthCraft</h1>
         <InputForm />
       </main>
     </>
