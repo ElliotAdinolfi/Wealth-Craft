@@ -21,3 +21,14 @@ I've tried to make it as simple as possible, and I will be adding features over 
 
 ## Check out some screenshots!
 ------
+
+The fields have some starting values, go ahead and override them with your chosen data
+
+![input fields](/pictures/inputs.jpg)
+
+The app will show you the final value of your account as well as the value over time
+![picture of graph](/pictures/graph.jpg)
+
+Hover the graph to show this fancy tooltip! :)
+![picture of tooltip](/pictures/tooltip.jpg)
+
