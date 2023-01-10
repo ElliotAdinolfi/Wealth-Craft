@@ -1,15 +1,28 @@
+"use client"
+
+import { useState } from "react"
+import GraphData from "./GraphData"
 
 const InputForm = () => {
-  return (
-    <div>
+  const [data, setData] = useState({
+    initialInvestment: 10000,
+    startingAge: 25,
+    annualReturn: 10,
+    yearsToRetirement: 45,
+    additionalContribution: 0,
+    contributionFrequency: 1,
+  })
 
-      <div>
+  return (
+    <div className="flex items-center flex-col">
+
+      <div className="w-fit">
         <label htmlFor="price" className="block text-sm font-medium text-gray-700 dark:text-gray-400">Initial Investment</label>
         <div className="relative mt-1 rounded-md shadow-sm">
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
             <span className="text-gray-500 sm:text-sm">$</span>
           </div>
-          <input type="text" name="price" id="price" className="text-black block w-full rounded-md border-gray-200 pl-9 pr-12 focus:border-teal-500 focus:ring-teal-500 sm:text-m" placeholder="0.00" aria-describedby="price-currency" />
+          <input type="text" name="price" id="price" className="text-black block w-full rounded-md border-gray-200 pl-9 pr-12 focus:border-teal-500 focus:ring-teal-500 sm:text-m" placeholder="10,000.00" aria-describedby="price-currency" />
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
             <span className="text-gray-500 sm:text-sm" id="price-currency">USD</span>
           </div>
@@ -42,12 +55,13 @@ const InputForm = () => {
           <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
             <span className="text-gray-500 sm:text-sm">$</span>
           </div>
-          <input type="text" name="price" id="price" className="block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-teal-500 focus:ring-teal-500 sm:text-m" placeholder="0.00"/>
+          <input type="text" name="price" id="price" className="text-black block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-teal-500 focus:ring-teal-500 sm:text-m" placeholder="0.00"/>
           <div className="absolute inset-y-0 right-0 flex items-center">
             <label htmlFor="time-frame" className="sr-only">Time Frame</label>
             <select id="time-frame" name="time-frame" className="h-full rounded-md border-transparent bg-transparent py-0 pl-2 pr-7 text-gray-500 focus:border-teal-500 focus:ring-teal-500 sm:text-m">
               <option>Annually</option>
               <option>Monthly</option>
+              <option>Bi-Weekly</option>
               <option>Weekly</option>
               <option>Daily</option>
             </select>
@@ -55,6 +69,7 @@ const InputForm = () => {
         </div>
       </div>
 
+      <GraphData data={data} />
     </div>
   )
 }

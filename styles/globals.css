@@ -23,8 +23,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 0, 53, 57;
+    --background-end-rgb: 0, 25,22;
 
     --tile-start-rgb: 2, 13, 46;
     --tile-end-rgb: 2, 5, 19;
@@ -70,6 +70,11 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.recharts_wrapper {
+  position: absolute;
+  max-width: 100%;
 }
 
 @media (prefers-color-scheme: dark) {

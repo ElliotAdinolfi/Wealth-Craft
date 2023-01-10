@@ -15,10 +15,10 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-  ],
   future: {
     hoverOnlyWhenSupported: true,
   },
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
