@@ -47,7 +47,7 @@ const GraphData = ({ data }: GraphProps) => {
         ${dataArray.length > 1 ? nf.format(dataArray[dataArray.length - 1].value) : 0}
       </h1>
       <h1 className="mt-16 text-3xl font-bold text-gray-900 dark:text-gray-300">Investment Growth</h1>
-      <div className="mt-8 w-screen flex justify-center">
+      <div className="max-w-7xl mt-8 w-screen flex justify-center">
         <ResponsiveContainer width="90%" aspect={2.2}>
           <BarChart
           width={830} 
