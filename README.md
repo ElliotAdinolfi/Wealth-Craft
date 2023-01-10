@@ -11,3 +11,13 @@ Anyway, I decided to make my own so I won't have to use any of those other optio
 If you have any suggestions on how to improve the application, please let me know by sending me a DM on [Twitter](https://twitter.com/Elliot_Adinolfi)
 
 And if you want to know more about me, or see some of the articles I write check out my personal [website](https://www.elliotadinolfi.dev/)
+
+## Using the calculator
+
+- Fill out info
+- Get back data over time! 
+
+I've tried to make it as simple as possible, and I will be adding features over time
+
+## Check out some screenshots!
+------
