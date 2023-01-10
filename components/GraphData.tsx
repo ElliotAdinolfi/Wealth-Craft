@@ -19,42 +19,62 @@ const GraphData = ({ data }: GraphProps) => {
       age: number;
       value: string;
       }[]>([])
+  const [ maxVal, setMaxVal ] = useState(290_000)
 
   useEffect(() => {
+    console.log(additionalContribution)
     const dataPoints = [];
-    let currentVal = initialInvestment
-    for (let i = 0; i < yearsToRetirement; i++) {
+    let currentVal = Number(initialInvestment.toString().replace(/[^0-9.]/g, ''))
+    let end = 81 - startingAge;
+    for (let i = 0; i < end; i++) {
       dataPoints.push({
-        age: startingAge + i,
+        age: Number(startingAge) + i,
         value: currentVal.toFixed(2)
       })
       currentVal = ((currentVal + (additionalContribution * contributionFrequency)) * (1 + (annualReturn / 100)))
     }
     setDataArray(dataPoints)
+    setMaxVal(Math.round(currentVal))
   }, [additionalContribution, annualReturn, contributionFrequency, initialInvestment, startingAge, yearsToRetirement])
 
+  let nf = new Intl.NumberFormat('en-US');
+
   return (
-    <div className="mt-32 w-screen flex justify-center">
-      <ResponsiveContainer width="90%" aspect={2.2}>
-        <BarChart
-        width={830} 
-        height={750} 
-        data={dataArray}
-        margin={{
-          top: 15,
-          right: 30,
-          left: 30,
-          bottom: 5,
-        }}>
-          <CartesianGrid opacity={0.2} vertical={false}/>
-          <XAxis dataKey="age" />
-          <YAxis domain={[0, 1_000_000]}/>
-          <Tooltip wrapperStyle={{ outline: "none" }} content={<CustomTooltip/>}/>
-          <Legend />
-          <Bar dataKey="value" fill="#82ca9d" />
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
+    <>
+      <h1 className="mt-16 text-3xl font-bold text-gray-900 dark:text-gray-300">Final Value</h1>
+      <h1 className="mt-16 text-3xl font-bold text-gray-900 dark:text-gray-500">
+        {/* @ts-ignore */}
+        ${dataArray.length > 1 ? nf.format(dataArray[dataArray.length - 1].value) : 0}
+      </h1>
+      <h1 className="mt-16 text-3xl font-bold text-gray-900 dark:text-gray-300">Investment Growth</h1>
+      <div className="mt-8 w-screen flex justify-center">
+        <ResponsiveContainer width="90%" aspect={2.2}>
+          <BarChart
+          width={830} 
+          height={750} 
+          data={dataArray}
+          margin={{
+            top: 15,
+            right: 10,
+            left: 50,
+            bottom: 5,
+          }}>
+            <CartesianGrid opacity={0.2} vertical={false}/>
+            <XAxis dataKey="age" />
+            <YAxis 
+              domain={[0, maxVal]}
+              tickFormatter={(tick) => {
+                let nf = new Intl.NumberFormat('en-US');
+                return `$${nf.format(tick)}` 
+              }}
+            />
+            <Tooltip wrapperStyle={{ outline: "none" }} content={<CustomTooltip/>}/>
+            <Legend />
+            <Bar dataKey="value" fill="#82ca9d" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+    </>
   )
 }
 
