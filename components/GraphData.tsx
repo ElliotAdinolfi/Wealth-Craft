@@ -87,8 +87,8 @@ const GraphData = ({ data }: GraphProps) => {
         {/* @ts-ignore */}
         Post-Tax Value: ${dataArray.length > 1 ? nf.format(((dataArray[dataArray.length - 1].value - totalContributions) * 0.8) + totalContributions) : 0}
       </h1>
-      <p className="mt-2 text-sm font-bold text-gray-900 dark:text-gray-600">
-        * Assuming 20% tax rate & taxes only applied to gains
+      <p className="mt-2 mb-36 text-sm font-bold text-gray-900 dark:text-gray-600">
+        * Assuming 20% capital gains tax
       </p>
     </>
   )
