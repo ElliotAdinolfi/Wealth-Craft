@@ -56,7 +56,7 @@ const GraphData = ({ data }: GraphProps) => {
       </h1>
       <h1 className="mt-4 text-3xl font-bold text-gray-900 dark:text-gray-500">
         {/* @ts-ignore */}
-        Post-Tax Value: ${dataArray.length > 1 ? nf.format(dataArray[dataArray.length - 1].value * 0.8) : 0}
+        Post-Tax Value: ${dataArray.length > 1 ? nf.format(((dataArray[dataArray.length - 1].value - totalContributions) * 0.8) + totalContributions) : 0}
       </h1>
       <h1 className="mt-16 text-3xl font-bold text-gray-900 dark:text-gray-300">Investment Growth</h1>
       <div className="max-w-7xl mt-8 w-screen flex justify-center">
