@@ -46,21 +46,6 @@ const GraphData = ({ data }: GraphProps) => {
 
   return (
     <>
-      <h1 className="mt-16 text-3xl font-bold text-gray-900 dark:text-gray-300">Final Value</h1>
-      <h1 className="mt-8 text-3xl font-bold text-gray-900 dark:text-gray-400">
-        Your Contributions: ${nf.format(totalContributions)}
-      </h1>
-      <h1 className="mt-4 text-3xl font-bold text-gray-900 dark:text-gray-400">
-        {/* @ts-ignore */}
-        Pre-Tax Value: ${dataArray.length > 1 ? nf.format(dataArray[dataArray.length - 1].value) : 0}
-      </h1>
-      <h1 className="mt-4 text-3xl font-bold text-gray-900 dark:text-gray-400">
-        {/* @ts-ignore */}
-        Post-Tax Value: ${dataArray.length > 1 ? nf.format(((dataArray[dataArray.length - 1].value - totalContributions) * 0.8) + totalContributions) : 0}
-      </h1>
-      <p className="mt-2 text-sm font-bold text-gray-900 dark:text-gray-600">
-        * Assuming 20% tax rate & taxes only applied to gains
-      </p>
       <h1 className="mt-16 text-3xl font-bold text-gray-900 dark:text-gray-300">Investment Growth</h1>
       <div className="max-w-7xl mt-8 w-screen flex justify-center">
         <ResponsiveContainer width="90%" aspect={2.2}>
@@ -89,6 +74,22 @@ const GraphData = ({ data }: GraphProps) => {
           </BarChart>
         </ResponsiveContainer>
       </div>
+
+      <h1 className="mt-16 text-3xl font-bold text-gray-900 dark:text-gray-300">Final Value</h1>
+      <h1 className="mt-8 text-3xl font-bold text-gray-900 dark:text-gray-400">
+        Your Contributions: ${nf.format(totalContributions)}
+      </h1>
+      <h1 className="mt-4 text-3xl font-bold text-gray-900 dark:text-gray-400">
+        {/* @ts-ignore */}
+        Pre-Tax Value: ${dataArray.length > 1 ? nf.format(dataArray[dataArray.length - 1].value) : 0}
+      </h1>
+      <h1 className="mt-4 text-3xl font-bold text-gray-900 dark:text-gray-400">
+        {/* @ts-ignore */}
+        Post-Tax Value: ${dataArray.length > 1 ? nf.format(((dataArray[dataArray.length - 1].value - totalContributions) * 0.8) + totalContributions) : 0}
+      </h1>
+      <p className="mt-2 text-sm font-bold text-gray-900 dark:text-gray-600">
+        * Assuming 20% tax rate & taxes only applied to gains
+      </p>
     </>
   )
 }
