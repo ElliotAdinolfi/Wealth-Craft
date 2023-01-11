@@ -20,19 +20,24 @@ const GraphData = ({ data }: GraphProps) => {
       value: string;
       }[]>([])
   const [ maxVal, setMaxVal ] = useState(290_000)
+  const [ totalContributions, setTotalContributions ] = useState(0)
 
   useEffect(() => {
-    console.log(additionalContribution)
+    
     const dataPoints = [];
     let currentVal = Number(initialInvestment.toString().replace(/[^0-9.]/g, ''))
     let end = endingAge - startingAge;
+    let contributions = initialInvestment;
     for (let i = 0; i < end + 1; i++) {
+      contributions += additionalContribution * contributionFrequency
       dataPoints.push({
         age: Number(startingAge) + i,
         value: currentVal.toFixed(2)
       })
       currentVal = ((currentVal + (additionalContribution * contributionFrequency)) * (1 + (annualReturn / 100)))
     }
+    setTotalContributions(contributions)
+    console.log(totalContributions)
     setDataArray(dataPoints)
     setMaxVal(Math.round(currentVal))
   }, [additionalContribution, annualReturn, contributionFrequency, endingAge, initialInvestment, startingAge])
@@ -42,9 +47,16 @@ const GraphData = ({ data }: GraphProps) => {
   return (
     <>
       <h1 className="mt-16 text-3xl font-bold text-gray-900 dark:text-gray-300">Final Value</h1>
-      <h1 className="mt-16 text-3xl font-bold text-gray-900 dark:text-gray-500">
+      <h1 className="mt-8 text-3xl font-bold text-gray-900 dark:text-gray-500">
+        Your Contributions: ${nf.format(totalContributions)}
+      </h1>
+      <h1 className="mt-4 text-3xl font-bold text-gray-900 dark:text-gray-500">
         {/* @ts-ignore */}
-        ${dataArray.length > 1 ? nf.format(dataArray[dataArray.length - 1].value) : 0}
+        Pre-Tax Value: ${dataArray.length > 1 ? nf.format(dataArray[dataArray.length - 1].value) : 0}
+      </h1>
+      <h1 className="mt-4 text-3xl font-bold text-gray-900 dark:text-gray-500">
+        {/* @ts-ignore */}
+        Post-Tax Value: ${dataArray.length > 1 ? nf.format(dataArray[dataArray.length - 1].value * 0.8) : 0}
       </h1>
       <h1 className="mt-16 text-3xl font-bold text-gray-900 dark:text-gray-300">Investment Growth</h1>
       <div className="max-w-7xl mt-8 w-screen flex justify-center">
