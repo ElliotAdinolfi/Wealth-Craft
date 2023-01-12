@@ -28,8 +28,11 @@ const GraphData = ({ data }: GraphProps) => {
     let currentVal = Number(initialInvestment.toString().replace(/[^0-9.]/g, ''))
     let end = endingAge - startingAge;
     let contributions = initialInvestment;
+    console.log({additionalContribution, contributionFrequency})
     for (let i = 0; i < end + 1; i++) {
-      contributions += additionalContribution * contributionFrequency
+      if (additionalContribution > 0) {
+        contributions += Number(additionalContribution) * contributionFrequency
+      }
       dataPoints.push({
         age: Number(startingAge) + i,
         value: currentVal.toFixed(2)
@@ -37,7 +40,7 @@ const GraphData = ({ data }: GraphProps) => {
       currentVal = ((currentVal + (additionalContribution * contributionFrequency)) * (1 + (annualReturn / 100)))
     }
     setTotalContributions(contributions)
-    console.log(totalContributions)
+    console.log(initialInvestment)
     setDataArray(dataPoints)
     setMaxVal(Math.round(currentVal))
   }, [additionalContribution, annualReturn, contributionFrequency, endingAge, initialInvestment, startingAge])
