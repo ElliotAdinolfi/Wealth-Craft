@@ -1,4 +1,4 @@
-import { Html, Head, Main, NextScript } from 'next/document'
+import { Html, Head, Main, NextScript } from 'next/document';
 
 const modeScript = `
   let darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
@@ -33,18 +33,18 @@ const modeScript = `
     disableTransitionsTemporarily()
     updateMode()
   }
-`
+`;
 
 export default function Document() {
   return (
-    <Html lang="en"> 
+    <Html lang="en">
       <Head />
       <script dangerouslySetInnerHTML={{ __html: modeScript }} />
-      <link rel="stylesheet" href="https://rsms.me/inter/inter.css"/>
+      <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
       <body>
         <Main />
         <NextScript />
       </body>
     </Html>
-  )
+  );
 }
